@@ -1,0 +1,13 @@
+form{
+    background-image: linear-gradient(to left, rgba(150, 45, 45, 0.77),white);
+}
+
+button{
+    background-color: rgb(152, 36, 49);
+    color: white;
+}
+
+button:hover{
+    border-color:  rgb(152, 36, 49);
+    color:  rgb(152, 36, 49);
+}
