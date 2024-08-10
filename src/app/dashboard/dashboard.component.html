@@ -4,8 +4,8 @@
     <!-- sidebar -->
      <div id="sidebar">
         <div class="text-center text-light mt-5">
-            <h5>Dashboard</h5>
-            <h5 class="mt-3">Employees</h5>
+            <a routerLink="/dashboard" style="text-decoration: none; color: white;"><h5>Dashboard</h5></a>
+           <a routerLink="/employee" style="text-decoration: none; color: white;"> <h5 class="mt-3">Employees</h5></a>
         </div>
      </div>
 
@@ -25,11 +25,41 @@
                     </div>
                 </div>
             </div>
+
+<!-- third column  ===  employee edit & employee count -->
             <div class="col-md-4">
+<!-- employee edit -->
                <div style="height: 400px; background-color: aqua;" class="rounded d-flex justify-content-center align-items-center flex-column">
-                <img src="https://snsrheumatology.com/wp-content/uploads/2023/03/SNS-Rheumatology-Testimonials-female-300x300-1.png" alt="no image" width="200px" height="200px" style="border-radius: 50%;">
-                <button class="btn">Edit Admin Details<i class="fa-solid fa-pen-nib ms-3"></i></button>
+
+                <!-- <img src="https://snsrheumatology.com/wp-content/uploads/2023/03/SNS-Rheumatology-Testimonials-female-300x300-1.png" alt="no image" width="200px" height="200px" style="border-radius: 50%;">
+                <button class="btn">Edit Admin Details<i class="fa-solid fa-pen-nib ms-3"></i></button> -->
+
+                <div class="d-flex justify-content-center align-items-center flex-column w-100">
+                    <h5>Update Admin Details</h5>
+                    <img src="https://snsrheumatology.com/wp-content/uploads/2023/03/SNS-Rheumatology-Testimonials-female-300x300-1.png" alt="no image" width="150px" height="150px" style="border-radius: 50%;">
+
+                    <form class="mt-4">
+                        <div class="mb-3">
+                            <input type="text" placeholder="Admin Name" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" placeholder="Password" class="form-control">
+                        </div>
+                        <div class="mb-3 d-flex justify-content-between">
+                            <button class="btn btn-warning">Cancel</button>
+                            <button class="btn btn-success">Update</button>
+                        </div>
+                    </form>
+                </div>
+
+
                </div>
+<!-- employee count -->
+               <div style="height: 200px; background-color: rgb(20, 96, 117);" class="rounded d-flex justify-content-center align-items-center flex-column shadow mt-4 text-light">
+                <h3><i class="fa-solid fa-users me-3"></i>Employee Count : 6</h3>
+                
+            </div>
+               
             </div>
           </div>
       </div>

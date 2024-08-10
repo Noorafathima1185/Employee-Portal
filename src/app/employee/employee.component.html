@@ -1,1 +1,78 @@
-<p>employee works!</p>
+<app-header></app-header>
+
+<div class="d-flex">
+
+        <!-- sidebar -->
+        <div id="sidebar">
+            <div class="text-center text-light mt-5">
+                <a routerLink="/dashboard" style="text-decoration: none; color: white;"><h5>Dashboard</h5></a>
+               <a routerLink="/employee" style="text-decoration: none; color: white;"> <h5 class="mt-3">Employees</h5></a>
+            </div>
+         </div>
+
+         <!-- main section -->
+          <div class="container-fluid">
+
+            <div class="row p-3">
+
+                <div class="d-flex ">
+                    <h3 id="h3">Employee List</h3>
+                    <button class="btn ms-auto" style="border-color: brown; color: brown;"><i class="fa-solid fa-user-plus me-2"></i>Add</button>
+                </div>
+
+                <h5 class="mt-2">08/07/2024, 10:13 AM</h5>
+
+                <div class="d-flex mt-5 px-md-5">
+
+                    <div class="d-flex">
+                        <input type="text" class="form-control" placeholder="Username">
+                        <!-- dropdown button -->
+                        <div class="dropdown ms-3">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: brown; color: white;">
+                              Sort
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">By ID</a></li>
+                              <li><a class="dropdown-item" href="#">By Name</a></li>
+                            </ul>
+                          </div>
+
+                    </div>
+
+                    <button class="btn btn-success ms-auto">Export<i class="fa-solid fa-file-export ms-2"></i></button>
+
+                </div>
+
+            </div>
+
+            <div class="row p-3 mt-5">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <table class="shadow table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="bg-secondary text-light p-3 text-center">UserID</th>
+                                <th class="bg-secondary text-light p-3 text-center">Username</th>
+                                <th class="bg-secondary text-light p-3 text-center">Email</th>
+                                <th class="bg-secondary text-light p-3 text-center">Status</th>
+                                <th class="bg-secondary text-light p-3 text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td class="text-center"><button class="btn btn-success">Active</button></td>
+                                <td class="d-flex justify-content-evenly"><button class="btn btn-outline-primary"><i class="fa-solid fa-pencil"></i></button>
+                                <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+          </div>
+
+</div>
