@@ -1,6 +1,6 @@
 #sidebar{
     width: 230px;
-    height: 91vh;
+    height: 93vh;
     background-color:  rgb(152, 36, 49);
 }
 
@@ -16,3 +16,7 @@
 /* .btn{
     color: rgb(152, 36, 49);
 } */
+
+.demo-inline-calendar-card {
+    background-color: rgba(127, 255, 212, 0.641);
+}
