@@ -6,14 +6,16 @@
         <img src="https://santarosacity.gov.ph/assets/img/img-otp.png" alt="no image" class="w-100">
     </div>
     <div class="col-md-5 d-flex align-items-center justify-content-center">
-        <form class="shadow p-4 w-100 ms-5">
+        <form #loginForm="ngForm" class="shadow p-4 w-100 ms-5" (ngSubmit)="login()">
             <h3 class="text-center text-light mb-3">Login Form</h3>
             <div class="mb-3">
-                <input type="text" placeholder="Email" class="form-control">
+                <input #adminMail="ngModel" type="text" placeholder="Email" class="form-control" name="mail" [(ngModel)]="email" required email>
+                <span *ngIf="adminMail.invalid && adminMail.touched" class="text-danger">*Invalid Input</span>
             </div>
             <div class="mb-3">
-                <input type="text" placeholder="Password" class="form-control">
+                <input #adminpswd="ngModel" type="text" placeholder="Password" class="form-control" name="pswd" [(ngModel)]="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{4,}$">
             </div>
+            <span *ngIf="adminMail.invalid && adminMail.touched" class="text-danger">*Invalid Input</span>
             <div class="mb-3">
                 <button class="btn w-100">Login</button>
             </div>
@@ -21,3 +23,5 @@
     </div>
     <div class="col-md-1"></div>
 </div>
+
+<!-- [disabled]="loginForm.invalid"  -->

@@ -15,6 +15,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { HighchartsChartModule } from 'highcharts-angular';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
