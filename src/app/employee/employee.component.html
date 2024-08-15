@@ -17,7 +17,7 @@
 
                 <div class="d-flex ">
                     <h3 id="h3">Employee List</h3>
-                    <button class="btn ms-auto" style="border-color: brown; color: brown;"><i class="fa-solid fa-user-plus me-2"></i>Add</button>
+                    <button class="btn ms-auto" style="border-color: brown; color: brown;"><i class="fa-solid fa-user-plus me-2" ></i>Add</button>
                 </div>
 
                 <h5 class="mt-2">08/07/2024, 10:13 AM</h5>
@@ -59,11 +59,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td class="text-center"><button class="btn btn-success">Active</button></td>
+                            <tr *ngFor="let employee of allEmployee" [hidden]="employee.id==1">
+                                <td>{{employee.id}}</td>
+                                <td>{{employee.empUsername}}</td>
+                                <td>{{employee.empEmail}}</td>
+                                <td class="text-center">
+                                <button [ngClass]="employee.empStatus=='1' ? 'btn btn-success':'btn btn-warning'">{{employee.empStatus=='1'?'Active':'Inactive'}}</button></td>
                                 <td class="d-flex justify-content-evenly"><button class="btn btn-outline-primary"><i class="fa-solid fa-pencil"></i></button>
                                 <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button></td>
                             </tr>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ApiService } from '../service/api.service';
+import { EmployeeModel } from 'src/employee.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -8,30 +10,39 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent {
-  empUsername:string=""
-  empEmail:string=""
-  empStatus:string=""
+ employeeDetails:EmployeeModel={}
 
 
-  constructor(private api:ApiService){}
+  constructor(private api:ApiService, private router:Router){}
 
 
   cancel(){
-    this.empUsername=""
-    this.empEmail=""
-    this.empStatus=""
+    this.employeeDetails={}
   }
 
   addEmployee(){
-    if(!this.empUsername || this.empEmail || this.empStatus){
-      Swal.fire({
-        title:'Oops',
-        text:'Please fill the form completely',
-        icon:'success'
-      })
-    }
-    else{
-      //api
-    }
+    console.log(this.employeeDetails);
+    
+    this.api.addEmployeeApi(this.employeeDetails).subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        Swal.fire({
+          title:'wow',
+          text:'Employee Added Successfully',
+          icon:"success"
+        })
+        this.router.navigateByUrl('/employee')
+
+      },
+      error:(err:any)=>{
+        console.log(err);
+        Swal.fire({
+          title:'oops',
+          text:'Something went to wrong',
+          icon:"error"
+        })
+      }
+    })
+
   }
 }

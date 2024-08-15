@@ -17,11 +17,18 @@ export class ApiService {
   //2) partial observation - object - error can happen - two keys - next(positive response) & error(negative response)
   // any one of the keys(next or error) will work at a time
 
+  // login api
   loginApi(){
     return this.http.get(`${this.serverURL}/employee/1`)
   }
 
+  //add employee api
   addEmployeeApi(reqbody:any){
     return this.http.post(`${this.serverURL}/employee`,reqbody)
+  }
+
+  // api to get all employees
+  getAllEmployee(){
+    return this.http.get(`${this.serverURL}/employee`)
   }
 }
