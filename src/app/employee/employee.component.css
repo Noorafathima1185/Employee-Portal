@@ -16,3 +16,7 @@
 #h3{
     color: rgb(152, 36, 49);
 }
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: rgb(152, 36, 49);
+  }

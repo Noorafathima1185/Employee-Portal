@@ -16,7 +16,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { SearchPipe } from './pipe/search.pipe'
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import {HttpClientModule} from '@angular/common/http'
     AddComponent,
     EditComponent,
     HeaderComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import {HttpClientModule} from '@angular/common/http'
     MatNativeDateModule,
     HighchartsChartModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -28,8 +28,8 @@ export class LoginComponent {
       this.api.loginApi().subscribe({
         next: (res: any) => {
           // console.log(res);
-          const { email, password } = res
-          if (email == this.email && password == this.password) {
+          const { empEmail, password } = res
+          if (empEmail == this.email && password == this.password) {
             Swal.fire({
               title: "Wow",
               text: "Login Successful",

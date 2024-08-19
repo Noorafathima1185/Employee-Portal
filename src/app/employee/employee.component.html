@@ -17,29 +17,31 @@
 
                 <div class="d-flex ">
                     <h3 id="h3">Employee List</h3>
-                    <button class="btn ms-auto" style="border-color: brown; color: brown;"><i class="fa-solid fa-user-plus me-2" ></i>Add</button>
+                    <a routerLink="/add-employee" class="ms-auto">
+                        <button class="btn ms-auto" style="border-color: brown; color: brown;"><i class="fa-solid fa-user-plus me-2" ></i>Add</button>
+                    </a>
                 </div>
 
-                <h5 class="mt-2">08/07/2024, 10:13 AM</h5>
+                <h5 class="mt-2">{{time | date:'short'}}</h5>
 
                 <div class="d-flex mt-5 px-md-5">
 
                     <div class="d-flex">
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="searchkey" name="skey">
                         <!-- dropdown button -->
                         <div class="dropdown ms-3">
                             <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: brown; color: white;">
                               Sort
                             </button>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">By ID</a></li>
-                              <li><a class="dropdown-item" href="#">By Name</a></li>
+                              <li><a class="dropdown-item" (click)="sortById()">By ID</a></li>
+                              <li><a class="dropdown-item" (click)="sortByName()">By Name</a></li>
                             </ul>
                           </div>
 
                     </div>
 
-                    <button class="btn btn-success ms-auto">Export<i class="fa-solid fa-file-export ms-2"></i></button>
+                    <button class="btn btn-success ms-auto"(click)="generatePdf()">Export<i class="fa-solid fa-file-export ms-2"></i></button>
 
                 </div>
 
@@ -59,17 +61,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let employee of allEmployee" [hidden]="employee.id==1">
+                            <tr *ngFor="let employee of allEmployee | search : searchkey | paginate: { itemsPerPage: 5, currentPage: p }" [hidden]="employee.id==1">
                                 <td>{{employee.id}}</td>
                                 <td>{{employee.empUsername}}</td>
                                 <td>{{employee.empEmail}}</td>
                                 <td class="text-center">
                                 <button [ngClass]="employee.empStatus=='1' ? 'btn btn-success':'btn btn-warning'">{{employee.empStatus=='1'?'Active':'Inactive'}}</button></td>
-                                <td class="d-flex justify-content-evenly"><button class="btn btn-outline-primary"><i class="fa-solid fa-pencil"></i></button>
-                                <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button></td>
+                                <td class="d-flex justify-content-evenly"><a routerLink="/edit/{{employee.id}}"><button class="btn btn-outline-primary"><i class="fa-solid fa-pencil"></i></button></a>
+                                <button class="btn btn-outline-danger" (click)="removeEmployee(employee.id)"><i class="fa-solid fa-trash"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
+
+                    <pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
+
                 </div>
                 <div class="col-md-1"></div>
             </div>
