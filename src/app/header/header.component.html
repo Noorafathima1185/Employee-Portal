@@ -4,5 +4,6 @@
         <i class="fa-solid fa-users-gear"></i>
         Employee Portal
       </a>
+      <button *ngIf="isLogged" class="btn btn-outline-light" type="button" (click)="logout()"><i class="fa-solid fa-power-off me-2"></i>Logout</button>
     </div>
   </nav>

@@ -13,7 +13,7 @@
          <!-- main section -->
           <div class="container-fluid">
 
-            <div class="row p-3">
+            <div class="container p-3">
 
                 <div class="d-flex ">
                     <h3 id="h3">Employee List</h3>
@@ -28,8 +28,11 @@
 
                     <div class="d-flex">
                         <input type="text" class="form-control" placeholder="Username" [(ngModel)]="searchkey" name="skey">
-                        <!-- dropdown button -->
-                        <div class="dropdown ms-3">
+
+                    </div>
+
+                       <!-- dropdown button -->
+                        <!-- <div class="dropdown ms-3"> -->
                             <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: brown; color: white;">
                               Sort
                             </button>
@@ -37,9 +40,7 @@
                               <li><a class="dropdown-item" (click)="sortById()">By ID</a></li>
                               <li><a class="dropdown-item" (click)="sortByName()">By Name</a></li>
                             </ul>
-                          </div>
-
-                    </div>
+                          <!-- </div> -->
 
                     <button class="btn btn-success ms-auto"(click)="generatePdf()">Export<i class="fa-solid fa-file-export ms-2"></i></button>
 

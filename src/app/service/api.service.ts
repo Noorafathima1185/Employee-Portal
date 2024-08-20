@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,8 @@ import { Injectable } from '@angular/core';
 export class ApiService {
 
   serverURL:string="http://localhost:4000"
+
+  dataShare = new BehaviorSubject(false)
 
   constructor(private http:HttpClient) { }
   //observable - more than one asynchronous functions
@@ -16,6 +19,10 @@ export class ApiService {
   //1) call back - no possibility of error
   //2) partial observation - object - error can happen - two keys - next(positive response) & error(negative response)
   // any one of the keys(next or error) will work at a time
+
+  updateData(data:any){
+    this.dataShare.next(data)
+  }
 
   // login api
   loginApi(){
@@ -46,4 +53,10 @@ export class ApiService {
   updateEmployeeDetailsApi(id:any,reqbody:any){
     return this.http.put(`${this.serverURL}/employee/${id}`,reqbody)
   }
+
+  // api to update admin details
+  updateAdminDetails(reqbody:any){
+    return this.http.put(`${this.serverURL}/employee/1`,reqbody)
+  }
+
 }

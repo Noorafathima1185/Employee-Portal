@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { ApiService } from '../service/api.service';
+import { addEvent } from 'highcharts/highcharts.src';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-dashboard',
@@ -15,6 +17,10 @@ export class DashboardComponent implements OnInit {
     isClicked: boolean = false
 
     AdminDetails: any = {}
+
+    total:number=0
+
+    profImg:string="https://snsrheumatology.com/wp-content/uploads/2023/03/SNS-Rheumatology-Testimonials-female-300x300-1.png"
 
     constructor(private api: ApiService) {
         this.chartOptions = {
@@ -94,9 +100,22 @@ export class DashboardComponent implements OnInit {
             next: (res: any) => {
                 console.log(res);
                 this.AdminDetails = res
+                if(res.profile){
+                    this.profImg = res.profile
+                }
             },
             error:(err: any)=>{
             console.log(err);
+        }
+      })
+
+      this.api.getAllEmployee().subscribe({
+        next:(res:any)=>{
+            this.total=res.length-1
+        },
+        error:(err:any)=>{
+            console.log(err);
+            
         }
       })
     }
@@ -107,6 +126,60 @@ buttonClick(){
 
 cancel(){
     this.isClicked = false
+    if(this.AdminDetails.profile){
+        this.profImg = this.AdminDetails.profile
+    }
+    else{
+        this.profImg = "https://snsrheumatology.com/wp-content/uploads/2023/03/SNS-Rheumatology-Testimonials-female-300x300-1.png"
+    }
+    
+}
+
+getFile(event:any){
+    // console.log(event.target.files[0]);
+    const file = event.target.files[0]
+
+    //FileReader - class used to convert a file into url
+
+    // 1)create an object for the classs
+    const fr = new FileReader()
+
+    // url convert
+    fr.readAsDataURL(file)
+
+    // inorder to access url - onload()
+    fr.onload = (event:any)=>{
+        console.log(event.target.result);
+        this.profImg = event.target.result
+    }
+    
+}
+
+updateAdmin(){
+    this.AdminDetails.profile = this.profImg
+    console.log(this.AdminDetails);
+
+    this.api.updateAdminDetails(this.AdminDetails).subscribe({
+        next:(res:any)=>{
+            console.log(res);
+            Swal.fire({
+                title:"wow",
+                text:"Profile added successfullly",
+                icon:"success"
+            })
+            this.isClicked = false
+            
+        },
+        error:(err:any)=>{
+            console.log(err);
+            Swal.fire({
+                title:"oops",
+                text:"something went to wrong",
+                icon:"error"
+            })
+        }
+    })
+    
 }
 
 }

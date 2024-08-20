@@ -44,24 +44,27 @@
                <div style="height: 400px; background-color: aqua;" class="rounded d-flex justify-content-center align-items-center flex-column">
 
                 <div *ngIf="!isClicked" class="rounded d-flex justify-content-center align-items-center flex-column">
-                    <img src="https://snsrheumatology.com/wp-content/uploads/2023/03/SNS-Rheumatology-Testimonials-female-300x300-1.png" alt="no image" width="200px" height="200px" style="border-radius: 50%;">
+                    <img [src]="profImg" alt="no image" width="200px" height="200px" style="border-radius: 50%;">
                     <button (click)="buttonClick()" class="btn">Edit Admin Details<i class="fa-solid fa-pen-nib ms-3"></i></button>
                 </div>
 
                 <div *ngIf="isClicked" class="d-flex justify-content-center align-items-center flex-column w-100">
                     <h5>Update Admin Details</h5>
-                    <img src="https://snsrheumatology.com/wp-content/uploads/2023/03/SNS-Rheumatology-Testimonials-female-300x300-1.png" alt="no image" width="150px" height="150px" style="border-radius: 50%;">
+                    <label for="profileImage">
+                        <input id="profileImage" type="file" style="display: none;" (change)="getFile($event)">
+                        <img [src]="profImg"  alt="no image" width="150px" height="150px" style="border-radius: 50%;">
+                    </label>
 
                     <form class="mt-4">
                         <div class="mb-3">
-                            <input type="text" placeholder="Admin Name" class="form-control">
+                            <input type="text" placeholder="Admin Name" class="form-control" [(ngModel)]="AdminDetails.empUsername" name="AdminName">
                         </div>
                         <div class="mb-3">
-                            <input type="text" placeholder="Password" class="form-control">
+                            <input type="text" placeholder="Password" class="form-control" [(ngModel)]="AdminDetails.password" name="password">
                         </div>
                         <div class="mb-3 d-flex justify-content-between">
                             <button (click)="cancel()" class="btn btn-warning">Cancel</button>
-                            <button class="btn btn-success">Update</button>
+                            <button class="btn btn-success" type="submit" (click)="updateAdmin()">Update</button>
                         </div>
                     </form>
                 </div>
@@ -70,7 +73,7 @@
                </div>
 <!-- employee count -->
                <div style="height: 200px; background-color: rgb(20, 96, 117);" class="rounded d-flex justify-content-center align-items-center flex-column shadow mt-4 text-light">
-                <h3><i class="fa-solid fa-users me-3"></i>Employee Count : 6</h3>
+                <h3><i class="fa-solid fa-users me-3"></i>Employee Count : {{total}}</h3>
                 
             </div>
                
